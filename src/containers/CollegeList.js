@@ -13,6 +13,7 @@ const CollegeList = ({
         const apiResult = await fetch('https://api.rootnet.in/covid19-in/hospitals/medical-colleges')
           .then((apiResult) => apiResult.json())
           .then((name) => name.data.medicalColleges);
+        console.log(apiResult);
         fetchSuccess(apiResult);
       } catch (error) {
         fetchFailure();
@@ -23,9 +24,14 @@ const CollegeList = ({
 
   return (
     <div>
-      <li>
-        {/* {collegeList.empty ? 'Loading...!!!' : collegeList } */}
-      </li>
+      <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
+      <section>
+        {console.log(isLoading)}
+        {
+          isLoading ? (<div>Loading...!!!</div>)
+            : (colleges.map((college) => college.name))
+        }
+      </section>
     </div>
   );
 };
@@ -46,7 +52,7 @@ CollegeList.defaultProps = {
 };
 
 const mapsStateToProps = (state) => ({
-  colleges: state.colleges,
+  colleges: state.data.colleges,
   isLoading: state.isLoading,
   isError: state.isError,
 });

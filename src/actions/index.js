@@ -6,8 +6,9 @@ const dataFetchIntialized = () => ({
   type: FETCH_START,
 });
 
-const dataFetchSuccess = () => ({
+const dataFetchSuccess = (data) => ({
   type: FETCH_SUCCESS,
+  payload: data,
 });
 
 const dataFetchFailure = () => ({
