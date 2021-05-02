@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
 import College from '../components/College';
+import pickCategories from '../constants/fetchCategory';
 
 const CollegeList = ({
   fetchIntialized, fetchSuccess, fetchFailure, colleges, isError, isLoading,
@@ -16,6 +17,7 @@ const CollegeList = ({
           .then((apiResult) => apiResult.json())
           .then((name) => name.data.medicalColleges);
         fetchSuccess(apiResult);
+        pickCategories(apiResult);
       } catch (error) {
         fetchFailure();
       }
