@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import College from '../components/College';
 
 const CollegeList = ({
   fetchIntialized, fetchSuccess, fetchFailure, colleges, isError, isLoading,
@@ -13,7 +14,6 @@ const CollegeList = ({
         const apiResult = await fetch('https://api.rootnet.in/covid19-in/hospitals/medical-colleges')
           .then((apiResult) => apiResult.json())
           .then((name) => name.data.medicalColleges);
-        console.log(apiResult);
         fetchSuccess(apiResult);
       } catch (error) {
         fetchFailure();
@@ -26,10 +26,9 @@ const CollegeList = ({
     <div>
       <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
       <section>
-        {console.log(isLoading)}
         {
           isLoading ? (<div>Loading...!!!</div>)
-            : (colleges.map((college) => college.name))
+            : (colleges.map((college) => (<College college={college} key={college.name} />)))
         }
       </section>
     </div>
