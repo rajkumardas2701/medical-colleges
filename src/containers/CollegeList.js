@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
 import College from '../components/College';
 
@@ -28,7 +29,7 @@ const CollegeList = ({
       <section>
         {
           isLoading ? (<div>Loading...!!!</div>)
-            : (colleges.map((college) => (<College college={college} key={college.name} />)))
+            : (colleges.map((college) => (<College college={college} key={uuidv4()} />)))
         }
       </section>
     </div>
