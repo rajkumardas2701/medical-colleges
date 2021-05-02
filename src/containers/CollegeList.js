@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'redux';
-// import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import { connect } from 'react-redux';
+import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
 
-const CollegeList = ({ fetchIntialized, fetchSuccess, fetchFailure }) => {
+const CollegeList = ({
+  fetchIntialized, fetchSuccess, fetchFailure, colleges, isError, isLoading,
+}) => {
   useEffect(() => {
     const data = async () => {
       fetchIntialized();
@@ -32,6 +34,27 @@ CollegeList.propTypes = {
   fetchIntialized: PropTypes.func.isRequired,
   fetchSuccess: PropTypes.func.isRequired,
   fetchFailure: PropTypes.func.isRequired,
+  colleges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  isError: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
-export default CollegeList;
+CollegeList.defaultProps = {
+  colleges: [],
+  isError: false,
+  isLoading: false,
+};
+
+const mapsStateToProps = (state) => ({
+  colleges: state.colleges,
+  isLoading: state.isLoading,
+  isError: state.isError,
+});
+
+const mapsDispatchToProps = (dispatch) => ({
+  fetchIntialized: () => dispatch(dataFetchIntialized()),
+  fetchSuccess: (data) => dispatch(dataFetchSuccess(data)),
+  fetchFailure: () => dispatch(dataFetchFailure()),
+});
+
+export default connect(mapsStateToProps, mapsDispatchToProps)(CollegeList);
