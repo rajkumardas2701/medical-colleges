@@ -1,13 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import collegesReducer from './collegesReducer';
-
-const INITIAL_STATE = {
-  data: {
-    colleges: [],
-    isLoading: false,
-    isError: false,
-  },
-};
+import INITIAL_STATE from '../constants/initialState';
 
 const rootReducer = combineReducers({
   data: collegesReducer,

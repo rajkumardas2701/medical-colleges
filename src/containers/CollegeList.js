@@ -2,12 +2,21 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import {
+  dataFetchIntialized, dataFetchSuccess, dataFetchFailure, changeStateCategoryAction,
+} from '../actions/index';
 import College from '../components/College';
 import pickCategories from '../constants/fetchCategory';
 
 const CollegeList = ({
-  fetchIntialized, fetchSuccess, fetchFailure, colleges, isError, isLoading,
+  fetchIntialized,
+  fetchSuccess,
+  fetchFailure,
+  colleges,
+  isError,
+  isLoading,
+  stateCategory,
+  changeStateCategory,
 }) => {
   useEffect(() => {
     const data = async () => {
@@ -45,6 +54,8 @@ CollegeList.propTypes = {
   colleges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   isError: PropTypes.bool,
   isLoading: PropTypes.bool,
+  stateCategory: PropTypes.string.isRequired,
+  changeStateCategory: PropTypes.func.isRequired,
 };
 
 CollegeList.defaultProps = {
@@ -55,14 +66,16 @@ CollegeList.defaultProps = {
 
 const mapsStateToProps = (state) => ({
   colleges: state.data.colleges,
-  isLoading: state.isLoading,
-  isError: state.isError,
+  isLoading: state.data.isLoading,
+  isError: state.data.isError,
+  stateCategory: state.categories.stateCategory,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
   fetchIntialized: () => dispatch(dataFetchIntialized()),
   fetchSuccess: (data) => dispatch(dataFetchSuccess(data)),
   fetchFailure: () => dispatch(dataFetchFailure()),
+  changeStateCategory: (stateCategory) => dispatch(changeStateCategoryAction(stateCategory)),
 });
 
 export default connect(mapsStateToProps, mapsDispatchToProps)(CollegeList);
