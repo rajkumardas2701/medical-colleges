@@ -20,4 +20,8 @@ const pickCategories = (apiResult) => {
   }
 };
 
-export default { pickCategories, stateCategories, cityStateCategories };
+const optionStateCategories = stateCategories.map((stateCategory) => (
+  <option key={stateCategory} value={stateCategory}>{stateCategory}</option>
+));
+
+export { pickCategories, optionStateCategories, cityStateCategories };
