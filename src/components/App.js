@@ -1,13 +1,11 @@
+// import React from 'react';
 import '../styles/App.css';
+import CollegeList from '../containers/CollegeList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Indian Medical Colleges</h1>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <CollegeList />
+  </div>
+);
 
 export default App;
