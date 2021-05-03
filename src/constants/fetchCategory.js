@@ -8,10 +8,11 @@ function pickStateCategories(state) {
   return stateCategories;
 }
 
-function pickCityCategories(state, city) {
+function pickCityCategories(state = '', city = '') {
   if (!cityStateCategories.includes({ state: `${state}`, city: `${city}` })) {
     cityStateCategories.push({ state: `${state}`, city: `${city}` });
   }
+  return cityStateCategories;
 }
 
 const pickCategories = (apiResult) => {
@@ -22,5 +23,5 @@ const pickCategories = (apiResult) => {
 };
 
 export {
-  pickCategories, pickStateCategories,
+  pickCategories, pickStateCategories, pickCityCategories,
 };

@@ -5,7 +5,9 @@ const INITIAL_STATE = {
     isError: false,
   },
   stateCategories: 'All',
+  cityCategories: 'All',
   allStateCategory: [],
+  cityOfStateCategory: [],
 };
 
 export default INITIAL_STATE;

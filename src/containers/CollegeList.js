@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import {
   dataFetchIntialized, dataFetchSuccess, dataFetchFailure, changeStateCategoryAction,
-  loadStateCategoryAction,
+  loadStateCategoryAction, loadCityOfStateCategoryAction,
 } from '../actions/index';
 import College from '../components/College';
-import { pickCategories, pickStateCategories } from '../constants/fetchCategory';
+import { pickCategories, pickStateCategories, pickCityCategories } from '../constants/fetchCategory';
 import StateCategoryFilter from '../components/StateCategoryFilter';
 
 const CollegeList = ({
@@ -21,6 +21,8 @@ const CollegeList = ({
   changeStateCategory,
   allStateCategory,
   loadStateCategories,
+  cityOfStateCategory,
+  loadCityCategories,
 }) => {
   let collegesFiltered = [];
 
@@ -34,8 +36,10 @@ const CollegeList = ({
         fetchSuccess(apiResult);
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
+        loadCityCategories(pickCityCategories());
       } catch (error) {
         fetchFailure();
+        console.log(cityOfStateCategory);
       }
     };
     data();
@@ -90,6 +94,8 @@ CollegeList.propTypes = {
   changeStateCategory: PropTypes.func.isRequired,
   allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadStateCategories: PropTypes.func.isRequired,
+  cityOfStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  loadCityCategories: PropTypes.func.isRequired,
 };
 
 CollegeList.defaultProps = {
@@ -97,6 +103,7 @@ CollegeList.defaultProps = {
   isError: false,
   isLoading: false,
   allStateCategory: [],
+  cityOfStateCategory: [],
 };
 
 const mapsStateToProps = (state) => ({
@@ -105,6 +112,7 @@ const mapsStateToProps = (state) => ({
   isError: state.data.isError,
   stateCategory: state.stateCategories,
   allStateCategory: state.allStateCategory,
+  cityOfStateCategory: state.cityOfStateCategory,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
@@ -113,6 +121,8 @@ const mapsDispatchToProps = (dispatch) => ({
   fetchFailure: () => dispatch(dataFetchFailure()),
   changeStateCategory: (stateCategory) => dispatch(changeStateCategoryAction(stateCategory)),
   loadStateCategories: (allStateCategory) => dispatch(loadStateCategoryAction(allStateCategory)),
+  loadCityCategories:
+  (cityOfStateCategory) => dispatch(loadCityOfStateCategoryAction(cityOfStateCategory)),
 });
 
 export default connect(mapsStateToProps, mapsDispatchToProps)(CollegeList);
