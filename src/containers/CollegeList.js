@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import {
   dataFetchIntialized, dataFetchSuccess, dataFetchFailure, changeStateCategoryAction,
-  loadStateCategoryAction, loadCityOfStateCategoryAction,
+  loadStateCategoryAction, loadCityOfStateCategoryAction, changeCityCategoryAction,
 } from '../actions/index';
 import College from '../components/College';
-import { pickCategories, pickStateCategories, pickCityCategories } from '../constants/fetchCategory';
+import {
+  pickCategories, pickStateCategories, pickCityCategories, pickCitiesOfState,
+} from '../constants/fetchCategory';
 import StateCategoryFilter from '../components/StateCategoryFilter';
+import CityCategoryFilter from '../components/CityCategoryFilter';
 
 const CollegeList = ({
   fetchIntialized,
@@ -19,6 +22,8 @@ const CollegeList = ({
   isLoading,
   stateCategory,
   changeStateCategory,
+  cityCategory,
+  changeCityCategory,
   allStateCategory,
   loadStateCategories,
   cityOfStateCategory,
@@ -37,22 +42,32 @@ const CollegeList = ({
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
         loadCityCategories(pickCityCategories());
+        // console.log(pickCityCategories());
       } catch (error) {
         fetchFailure();
-        console.log(cityOfStateCategory);
       }
     };
     data();
   }, []);
 
-  const handleStateChange = (event) => changeStateCategory(event.target.value);
+  const handleStateChange = (event) => {
+    changeStateCategory(event.target.value);
+    // console.log(pickCitiesOfState(event.target.value));
+    loadCityCategories(pickCitiesOfState(event.target.value));
+  };
+
+  const handleCityChange = (event) => changeCityCategory(event.target.value);
+  // console.log(stateCategory);
+  // console.log(cityCategory);
 
   if (colleges.length === 0) {
     collegesFiltered = null;
-  } else if (stateCategory === 'All') {
+  } else if (stateCategory === 'All' && cityCategory === 'All') {
     collegesFiltered = colleges;
-  } else {
+  } else if (stateCategory && cityCategory === 'All') {
     collegesFiltered = colleges.filter((college) => college.state === stateCategory);
+  } else {
+    collegesFiltered = colleges.filter((college) => college.city === cityCategory);
   }
   return (
     <div>
@@ -65,6 +80,10 @@ const CollegeList = ({
                 <StateCategoryFilter
                   handleStateChange={handleStateChange}
                   allStateCategory={allStateCategory}
+                />
+                <CityCategoryFilter
+                  handleCityChange={handleCityChange}
+                  cityOfStateCategory={cityOfStateCategory}
                 />
                 {
                 (collegesFiltered)
@@ -91,7 +110,9 @@ CollegeList.propTypes = {
   isError: PropTypes.bool,
   isLoading: PropTypes.bool,
   stateCategory: PropTypes.string.isRequired,
+  cityCategory: PropTypes.string.isRequired,
   changeStateCategory: PropTypes.func.isRequired,
+  changeCityCategory: PropTypes.func.isRequired,
   allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadStateCategories: PropTypes.func.isRequired,
   cityOfStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
@@ -113,6 +134,7 @@ const mapsStateToProps = (state) => ({
   stateCategory: state.stateCategories,
   allStateCategory: state.allStateCategory,
   cityOfStateCategory: state.cityOfStateCategory,
+  cityCategory: state.cityCategories,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
@@ -120,6 +142,7 @@ const mapsDispatchToProps = (dispatch) => ({
   fetchSuccess: (data) => dispatch(dataFetchSuccess(data)),
   fetchFailure: () => dispatch(dataFetchFailure()),
   changeStateCategory: (stateCategory) => dispatch(changeStateCategoryAction(stateCategory)),
+  changeCityCategory: (cityCategory) => dispatch(changeCityCategoryAction(cityCategory)),
   loadStateCategories: (allStateCategory) => dispatch(loadStateCategoryAction(allStateCategory)),
   loadCityCategories:
   (cityOfStateCategory) => dispatch(loadCityOfStateCategoryAction(cityOfStateCategory)),

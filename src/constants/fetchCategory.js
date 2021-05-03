@@ -12,7 +12,19 @@ function pickCityCategories(state = '', city = '') {
   if (!cityStateCategories.includes({ state: `${state}`, city: `${city}` })) {
     cityStateCategories.push({ state: `${state}`, city: `${city}` });
   }
-  return cityStateCategories;
+}
+
+function pickCitiesOfState(state = 'All') {
+  const obj = [];
+  if (state === 'All') {
+    return cityStateCategories.map((category) => category.city);
+  }
+  for (let i = 0; i < cityStateCategories.length; i += 1) {
+    if (cityStateCategories[i].state === state) {
+      obj.push(cityStateCategories[i].city);
+    }
+  }
+  return obj;
 }
 
 const pickCategories = (apiResult) => {
@@ -23,5 +35,5 @@ const pickCategories = (apiResult) => {
 };
 
 export {
-  pickCategories, pickStateCategories, pickCityCategories,
+  pickCategories, pickStateCategories, pickCityCategories, pickCitiesOfState,
 };
