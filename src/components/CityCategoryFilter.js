@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const CityCategoryFilter = ({ handleCityChange, cityOfStateCategory }) => (
   <div>
     <span>Filter by City</span>
-    <select onChange={handleCityChange} name="stateCategory">
+    <select onChange={handleCityChange} name="cityCategory">
       <option value="All">All</option>
       {cityOfStateCategory.map((city) => (
         city ? <option key={city} value={city}>{city}</option> : null

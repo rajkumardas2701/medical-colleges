@@ -42,8 +42,9 @@ const CollegeList = ({
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
         loadCityCategories(pickCityCategories());
-        // console.log(pickCityCategories());
       } catch (error) {
+        console.log('Inside Fetch failure');
+        console.log(error);
         fetchFailure();
       }
     };
@@ -52,8 +53,11 @@ const CollegeList = ({
 
   const handleStateChange = (event) => {
     changeStateCategory(event.target.value);
-    // console.log(pickCitiesOfState(event.target.value));
-    loadCityCategories(pickCitiesOfState(event.target.value));
+    if (event.target.value === 'All') {
+      loadCityCategories(pickCitiesOfState('All'));
+    } else {
+      loadCityCategories(pickCitiesOfState(event.target.value));
+    }
   };
 
   const handleCityChange = (event) => changeCityCategory(event.target.value);
@@ -69,6 +73,9 @@ const CollegeList = ({
   } else {
     collegesFiltered = colleges.filter((college) => college.city === cityCategory);
   }
+
+  console.log(isError);
+
   return (
     <div>
       <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>

@@ -17,11 +17,18 @@ function pickCityCategories(state = '', city = '') {
 function pickCitiesOfState(state = 'All') {
   const obj = [];
   if (state === 'All') {
-    return cityStateCategories.map((category) => category.city);
-  }
-  for (let i = 0; i < cityStateCategories.length; i += 1) {
-    if (cityStateCategories[i].state === state) {
-      obj.push(cityStateCategories[i].city);
+    for (let i = 0; i < cityStateCategories.length; i += 1) {
+      if (!obj.includes(cityStateCategories[i].city)) {
+        obj.push(cityStateCategories[i].city);
+      }
+    }
+  } else {
+    for (let i = 0; i < cityStateCategories.length; i += 1) {
+      if (cityStateCategories[i].state === state) {
+        if (!obj.includes(cityStateCategories[i].city)) {
+          obj.push(cityStateCategories[i].city);
+        }
+      }
     }
   }
   return obj;
