@@ -34,7 +34,6 @@ const CollegeList = ({
         fetchSuccess(apiResult);
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
-        // console.log(pickStateCategories());
       } catch (error) {
         fetchFailure();
       }

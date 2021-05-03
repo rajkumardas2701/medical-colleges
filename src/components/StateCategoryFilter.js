@@ -7,7 +7,7 @@ const StateCategoryFilter = ({ handleStateChange, allStateCategory }) => (
     <select onChange={handleStateChange} name="stateCategory">
       <option value="All">All</option>
       {allStateCategory.map((state) => (
-        <option key={state} value={state}>{state}</option>
+        state ? <option key={state} value={state}>{state}</option> : null
       ))}
     </select>
   </div>
