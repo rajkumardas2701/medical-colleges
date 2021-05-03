@@ -4,9 +4,8 @@ const INITIAL_STATE = {
     isLoading: false,
     isError: false,
   },
-  categories: {
-    stateCategory: 'All',
-  },
+  stateCategories: 'All',
+  allStateCategory: [],
 };
 
 export default INITIAL_STATE;

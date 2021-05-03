@@ -2,6 +2,7 @@ const FETCH_START = 'FETCH_START';
 const FETCH_SUCCESS = 'FETCH_SUCCESS';
 const FETCH_FAILURE = 'FETCH_FAILURE';
 const STATE_FILTER = 'STATE_FILTER';
+const LOAD_ALL_STATE = 'LOAD_ALL_STATE';
 
 const dataFetchIntialized = () => ({
   type: FETCH_START,
@@ -21,13 +22,20 @@ const changeStateCategoryAction = (stateCategory) => ({
   stateCategory,
 });
 
+const loadStateCategoryAction = (allStateCategory) => ({
+  type: LOAD_ALL_STATE,
+  allStateCategory,
+});
+
 export {
   FETCH_START,
   FETCH_FAILURE,
   FETCH_SUCCESS,
   STATE_FILTER,
+  LOAD_ALL_STATE,
   dataFetchIntialized,
   dataFetchSuccess,
   dataFetchFailure,
   changeStateCategoryAction,
+  loadStateCategoryAction,
 };

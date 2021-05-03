@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import {
   dataFetchIntialized, dataFetchSuccess, dataFetchFailure, changeStateCategoryAction,
+  loadStateCategoryAction,
 } from '../actions/index';
 import College from '../components/College';
-import pickCategories from '../constants/fetchCategory';
+import { pickCategories, pickStateCategories } from '../constants/fetchCategory';
+import StateCategoryFilter from '../components/StateCategoryFilter';
 
 const CollegeList = ({
   fetchIntialized,
@@ -17,7 +19,11 @@ const CollegeList = ({
   isLoading,
   stateCategory,
   changeStateCategory,
+  loadStateCategories,
 }) => {
+  let collegesFiltered = [];
+  // const [stateCategory, changeStateCategory] = useState([]);
+
   useEffect(() => {
     const data = async () => {
       fetchIntialized();
@@ -27,6 +33,7 @@ const CollegeList = ({
           .then((name) => name.data.medicalColleges);
         fetchSuccess(apiResult);
         pickCategories(apiResult);
+        loadStateCategories(pickStateCategories());
       } catch (error) {
         fetchFailure();
       }
@@ -34,13 +41,35 @@ const CollegeList = ({
     data();
   }, []);
 
+  const handleStateChange = (event) => changeStateCategory(event.target.value);
+
+  if (colleges.length === 0) {
+    collegesFiltered = null;
+  } else if (stateCategory === 'All') {
+    collegesFiltered = colleges;
+  } else {
+    collegesFiltered = colleges.filter((college) => college.state === stateCategory);
+  }
   return (
     <div>
       <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
       <section>
         {
           isLoading ? (<div>Loading...!!!</div>)
-            : (colleges.map((college) => (<College college={college} key={uuidv4()} />)))
+            : (
+              <>
+                <StateCategoryFilter handleStateChange={handleStateChange} />
+                {
+                (collegesFiltered)
+                  ? (collegesFiltered.map((college) => (
+                    <College college={college} key={uuidv4()} />
+                  )))
+                  : (
+                    <div>Please wait...</div>
+                  )
+                }
+              </>
+            )
         }
       </section>
     </div>
@@ -56,19 +85,23 @@ CollegeList.propTypes = {
   isLoading: PropTypes.bool,
   stateCategory: PropTypes.string.isRequired,
   changeStateCategory: PropTypes.func.isRequired,
+  // allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  loadStateCategories: PropTypes.func.isRequired,
 };
 
 CollegeList.defaultProps = {
   colleges: [],
   isError: false,
   isLoading: false,
+  // allStateCategory: [],
 };
 
 const mapsStateToProps = (state) => ({
   colleges: state.data.colleges,
   isLoading: state.data.isLoading,
   isError: state.data.isError,
-  stateCategory: state.categories.stateCategory,
+  stateCategory: state.stateCategories,
+  allStateCategory: state.allStateCategory,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
@@ -76,6 +109,7 @@ const mapsDispatchToProps = (dispatch) => ({
   fetchSuccess: (data) => dispatch(dataFetchSuccess(data)),
   fetchFailure: () => dispatch(dataFetchFailure()),
   changeStateCategory: (stateCategory) => dispatch(changeStateCategoryAction(stateCategory)),
+  loadStateCategories: (allStateCategory) => dispatch(loadStateCategoryAction(allStateCategory)),
 });
 
 export default connect(mapsStateToProps, mapsDispatchToProps)(CollegeList);

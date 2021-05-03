@@ -5,6 +5,7 @@ function pickStateCategories(state) {
   if (!stateCategories.includes(state)) {
     stateCategories.push(state);
   }
+  return stateCategories;
 }
 
 function pickCityCategories(state, city) {
@@ -23,5 +24,14 @@ const pickCategories = (apiResult) => {
 const optionStateCategories = stateCategories.map((stateCategory) => (
   <option key={stateCategory} value={stateCategory}>{stateCategory}</option>
 ));
+// console.log(optionStateCategories);
 
-export { pickCategories, optionStateCategories, cityStateCategories };
+// const optionStateCategories = (stateCategories) => {
+//   stateCategories.map((stateCategory) => (
+//     <option key={stateCategory} value={stateCategory}>{stateCategory}</option>
+//   ));
+// console.log('Inside optionStateCategories');
+
+export {
+  pickCategories, optionStateCategories, cityStateCategories, pickStateCategories,
+};
