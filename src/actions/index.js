@@ -5,6 +5,7 @@ const STATE_FILTER = 'STATE_FILTER';
 const CITY_FILTER = 'CITY_FILTER';
 const LOAD_ALL_STATE = 'LOAD_ALL_STATE';
 const LOAD_CITY_STATE = 'LOAD_CITY_STATE';
+const LOAD_CITY_STATE_OBJECT = 'LOAD_CITY_STATE_OBJECT';
 
 const dataFetchIntialized = () => ({
   type: FETCH_START,
@@ -39,6 +40,11 @@ const loadCityOfStateCategoryAction = (cityOfStateCategory) => ({
   cityOfStateCategory,
 });
 
+const loadCityAndStateObjectAction = (cityAndStateObject) => ({
+  type: LOAD_CITY_STATE_OBJECT,
+  cityAndStateObject,
+});
+
 export {
   FETCH_START,
   FETCH_FAILURE,
@@ -47,6 +53,7 @@ export {
   LOAD_ALL_STATE,
   LOAD_CITY_STATE,
   CITY_FILTER,
+  LOAD_CITY_STATE_OBJECT,
   dataFetchIntialized,
   dataFetchSuccess,
   dataFetchFailure,
@@ -54,4 +61,5 @@ export {
   loadStateCategoryAction,
   loadCityOfStateCategoryAction,
   changeCityCategoryAction,
+  loadCityAndStateObjectAction,
 };

@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   cityCategories: 'All',
   allStateCategory: [],
   cityOfStateCategory: [],
+  cityAndStateObject: [],
 };
 
 export default INITIAL_STATE;

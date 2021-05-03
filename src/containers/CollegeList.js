@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {
   dataFetchIntialized, dataFetchSuccess, dataFetchFailure, changeStateCategoryAction,
   loadStateCategoryAction, loadCityOfStateCategoryAction, changeCityCategoryAction,
+  loadCityAndStateObjectAction,
 } from '../actions/index';
 import College from '../components/College';
 import {
@@ -28,6 +29,8 @@ const CollegeList = ({
   loadStateCategories,
   cityOfStateCategory,
   loadCityCategories,
+  // cityAndStateObject,
+  loadStateAndCityObject,
 }) => {
   let collegesFiltered = [];
 
@@ -41,10 +44,8 @@ const CollegeList = ({
         fetchSuccess(apiResult);
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
-        loadCityCategories(pickCityCategories());
+        loadStateAndCityObject(pickCityCategories());
       } catch (error) {
-        console.log('Inside Fetch failure');
-        console.log(error);
         fetchFailure();
       }
     };
@@ -73,9 +74,6 @@ const CollegeList = ({
   } else {
     collegesFiltered = colleges.filter((college) => college.city === cityCategory);
   }
-
-  console.log(isError);
-
   return (
     <div>
       <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
@@ -124,6 +122,7 @@ CollegeList.propTypes = {
   loadStateCategories: PropTypes.func.isRequired,
   cityOfStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadCityCategories: PropTypes.func.isRequired,
+  loadStateAndCityObject: PropTypes.func.isRequired,
 };
 
 CollegeList.defaultProps = {
@@ -142,6 +141,7 @@ const mapsStateToProps = (state) => ({
   allStateCategory: state.allStateCategory,
   cityOfStateCategory: state.cityOfStateCategory,
   cityCategory: state.cityCategories,
+  cityAndStateObject: state.cityAndStateObject,
 });
 
 const mapsDispatchToProps = (dispatch) => ({
@@ -153,6 +153,8 @@ const mapsDispatchToProps = (dispatch) => ({
   loadStateCategories: (allStateCategory) => dispatch(loadStateCategoryAction(allStateCategory)),
   loadCityCategories:
   (cityOfStateCategory) => dispatch(loadCityOfStateCategoryAction(cityOfStateCategory)),
+  loadStateAndCityObject:
+  (cityAndStateObject) => dispatch(loadCityAndStateObjectAction(cityAndStateObject)),
 });
 
 export default connect(mapsStateToProps, mapsDispatchToProps)(CollegeList);

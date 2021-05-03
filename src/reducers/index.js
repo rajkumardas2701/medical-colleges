@@ -5,6 +5,7 @@ import stateCategoriesReducer from './stateCategoriesReducer';
 import allStateCategoriesReducer from './allStateCategoriesReducer';
 import cityOfStateCategoriesReducer from './cityOfStateCategoriesReducer';
 import cityCategoriesReducer from './cityCategoriesReducer';
+import cityAndStateObjectReducer from './cityAndStateObjectReducer';
 
 const rootReducer = combineReducers({
   data: collegesReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   allStateCategory: allStateCategoriesReducer,
   cityOfStateCategory: cityOfStateCategoriesReducer,
   cityCategories: cityCategoriesReducer,
+  cityAndStateObject: cityAndStateObjectReducer,
 });
 
 const store = createStore(rootReducer, INITIAL_STATE);
