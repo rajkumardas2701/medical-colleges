@@ -21,17 +21,6 @@ const pickCategories = (apiResult) => {
   }
 };
 
-const optionStateCategories = stateCategories.map((stateCategory) => (
-  <option key={stateCategory} value={stateCategory}>{stateCategory}</option>
-));
-// console.log(optionStateCategories);
-
-// const optionStateCategories = (stateCategories) => {
-//   stateCategories.map((stateCategory) => (
-//     <option key={stateCategory} value={stateCategory}>{stateCategory}</option>
-//   ));
-// console.log('Inside optionStateCategories');
-
 export {
-  pickCategories, optionStateCategories, cityStateCategories, pickStateCategories,
+  pickCategories, pickStateCategories,
 };

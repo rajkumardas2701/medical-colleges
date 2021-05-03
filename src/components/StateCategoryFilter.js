@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { optionStateCategories } from '../constants/fetchCategory';
 
-const StateCategoryFilter = ({ handleStateChange }) => (
+const StateCategoryFilter = ({ handleStateChange, allStateCategory }) => (
   <div>
     <span>Filter by State</span>
     <select onChange={handleStateChange} name="stateCategory">
       <option value="All">All</option>
-      {optionStateCategories}
+      {allStateCategory.map((state) => (
+        <option key={state} value={state}>{state}</option>
+      ))}
     </select>
   </div>
 );
 
 StateCategoryFilter.propTypes = {
   handleStateChange: PropTypes.func.isRequired,
+  allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+};
+
+StateCategoryFilter.defaultProps = {
+  allStateCategory: [],
 };
 
 export default StateCategoryFilter;

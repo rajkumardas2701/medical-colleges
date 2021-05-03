@@ -19,10 +19,10 @@ const CollegeList = ({
   isLoading,
   stateCategory,
   changeStateCategory,
+  allStateCategory,
   loadStateCategories,
 }) => {
   let collegesFiltered = [];
-  // const [stateCategory, changeStateCategory] = useState([]);
 
   useEffect(() => {
     const data = async () => {
@@ -34,6 +34,7 @@ const CollegeList = ({
         fetchSuccess(apiResult);
         pickCategories(apiResult);
         loadStateCategories(pickStateCategories());
+        // console.log(pickStateCategories());
       } catch (error) {
         fetchFailure();
       }
@@ -58,7 +59,10 @@ const CollegeList = ({
           isLoading ? (<div>Loading...!!!</div>)
             : (
               <>
-                <StateCategoryFilter handleStateChange={handleStateChange} />
+                <StateCategoryFilter
+                  handleStateChange={handleStateChange}
+                  allStateCategory={allStateCategory}
+                />
                 {
                 (collegesFiltered)
                   ? (collegesFiltered.map((college) => (
@@ -85,7 +89,7 @@ CollegeList.propTypes = {
   isLoading: PropTypes.bool,
   stateCategory: PropTypes.string.isRequired,
   changeStateCategory: PropTypes.func.isRequired,
-  // allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  allStateCategory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   loadStateCategories: PropTypes.func.isRequired,
 };
 
@@ -93,7 +97,7 @@ CollegeList.defaultProps = {
   colleges: [],
   isError: false,
   isLoading: false,
-  // allStateCategory: [],
+  allStateCategory: [],
 };
 
 const mapsStateToProps = (state) => ({
