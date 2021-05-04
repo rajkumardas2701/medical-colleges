@@ -78,7 +78,7 @@ const CollegeList = ({
   return (
     <>
       <NavBar />
-      <div className="collegeListSection">
+      <div className="collegeSection">
         <h1>
           {isError
         && <div>Unable to fetch data at this moment, please try again later!</div>}
@@ -98,7 +98,8 @@ const CollegeList = ({
                     cityOfStateCategory={cityOfStateCategory}
                   />
                 </section>
-                {
+                <div className="collegeListSection">
+                  {
                 (collegesFiltered)
                   ? (collegesFiltered.map((college) => (
                     <College college={college} key={uuidv4()} />
@@ -106,7 +107,9 @@ const CollegeList = ({
                   : (
                     <div>Please wait...</div>
                   )
+
                 }
+                </div>
               </>
             )
         }

@@ -3,10 +3,10 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgba(41, 29, 29, 0.856);
   color: white;
   text-align: center;
   height: 50px;
+  background-color: rgb(41, 29, 29);
 }
 
 footer > p {
