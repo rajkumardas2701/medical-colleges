@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/StateCategoryFilter.css';
 
 const CityCategoryFilter = ({ handleCityChange, cityOfStateCategory }) => (
-  <div>
-    <span>Filter by City</span>
-    <select onChange={handleCityChange} name="cityCategory">
-      <option value="All">All</option>
+  <div className="stateFilter">
+    <span className="filterLabel">Filter by City</span>
+    <select onChange={handleCityChange} name="cityCategory" className="dropDown">
+      <option value="All" className="dropdownText">All</option>
       {cityOfStateCategory.map((city) => (
-        city ? <option key={city} value={city}>{city}</option> : null
+        city ? <option key={city} value={city} className="dropdownText">{city}</option> : null
       ))}
     </select>
   </div>

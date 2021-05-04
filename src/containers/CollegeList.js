@@ -88,14 +88,16 @@ const CollegeList = ({
           isLoading ? (<div className="loader" />)
             : (
               <>
-                <StateCategoryFilter
-                  handleStateChange={handleStateChange}
-                  allStateCategory={allStateCategory}
-                />
-                <CityCategoryFilter
-                  handleCityChange={handleCityChange}
-                  cityOfStateCategory={cityOfStateCategory}
-                />
+                <section className="filterSection">
+                  <StateCategoryFilter
+                    handleStateChange={handleStateChange}
+                    allStateCategory={allStateCategory}
+                  />
+                  <CityCategoryFilter
+                    handleCityChange={handleCityChange}
+                    cityOfStateCategory={cityOfStateCategory}
+                  />
+                </section>
                 {
                 (collegesFiltered)
                   ? (collegesFiltered.map((college) => (
