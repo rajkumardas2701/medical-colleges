@@ -45,6 +45,19 @@ const loadCityAndStateObjectAction = (cityAndStateObject) => ({
   cityAndStateObject,
 });
 
+const detailsFetchIntialized = () => ({
+  type: FETCH_START,
+});
+
+const detailsFetchSuccess = (data) => ({
+  type: FETCH_SUCCESS,
+  payload: data,
+});
+
+const detailsFetchFailure = () => ({
+  type: FETCH_FAILURE,
+});
+
 export {
   FETCH_START,
   FETCH_FAILURE,
@@ -62,4 +75,7 @@ export {
   loadCityOfStateCategoryAction,
   changeCityCategoryAction,
   loadCityAndStateObjectAction,
+  detailsFetchFailure,
+  detailsFetchSuccess,
+  detailsFetchIntialized,
 };
