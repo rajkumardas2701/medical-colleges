@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import collegesReducer from './collegesReducer';
-import INITIAL_STATE from '../constants/initialState';
+import { INITIAL_STATE } from '../constants/initialState';
 import stateCategoriesReducer from './stateCategoriesReducer';
 import allStateCategoriesReducer from './allStateCategoriesReducer';
 import cityOfStateCategoriesReducer from './cityOfStateCategoriesReducer';

@@ -13,6 +13,7 @@ import {
 } from '../constants/fetchCategory';
 import StateCategoryFilter from '../components/StateCategoryFilter';
 import CityCategoryFilter from '../components/CityCategoryFilter';
+import { apiUrl } from '../constants/initialState';
 
 const CollegeList = ({
   fetchIntialized,
@@ -38,7 +39,7 @@ const CollegeList = ({
     const data = async () => {
       fetchIntialized();
       try {
-        const apiResult = await fetch('https://api.rootnet.in/covid19-in/hospitals/medical-colleges')
+        const apiResult = await fetch(apiUrl)
           .then((apiResult) => apiResult.json())
           .then((name) => name.data.medicalColleges);
         fetchSuccess(apiResult);

@@ -4,6 +4,11 @@ const INITIAL_STATE = {
     isLoading: false,
     isError: false,
   },
+  details: {
+    colleges: [],
+    isLoading: false,
+    isError: false,
+  },
   stateCategories: 'All',
   cityCategories: 'All',
   allStateCategory: [],
@@ -11,4 +16,6 @@ const INITIAL_STATE = {
   cityAndStateObject: [],
 };
 
-export default INITIAL_STATE;
+const apiUrl = 'https://api.rootnet.in/covid19-in/hospitals/medical-colleges';
+
+export { INITIAL_STATE, apiUrl };
