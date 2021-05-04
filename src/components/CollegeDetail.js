@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 
 const CollegeDetail = ({
-  fetchInitialized, fetchSuccess, fetchFailure, colleges, isLoading, isError,
+  fetchInitialized, fetchSuccess, fetchFailure,
 }) => {
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +21,9 @@ const CollegeDetail = ({
     fetchData();
   }, []);
 };
+
+// colleges, isLoading, isError,
+// React,
 
 const mapsStateToProps = (state) => ({
   colleges: state.details.colleges,

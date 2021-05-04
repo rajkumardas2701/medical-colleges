@@ -23,6 +23,7 @@ const College = ({ college }) => (
       <b>Beds:</b>
       {college.hospitalBeds}
     </li>
+    <a href={`/details/${college.name}`}>Link</a>
   </ul>
 );
 
