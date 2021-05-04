@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 import NavBar from '../layouts/NavBar';
+import Footer from '../layouts/Footer';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure, colleges,
@@ -68,6 +69,7 @@ const CollegeDetail = ({
         </div>
       )
       }
+      <Footer />
     </>
   );
 };

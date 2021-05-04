@@ -1,0 +1,14 @@
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(41, 29, 29, 0.856);
+  color: white;
+  text-align: center;
+}
+
+footer > p {
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}

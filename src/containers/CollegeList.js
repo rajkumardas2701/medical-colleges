@@ -15,6 +15,7 @@ import StateCategoryFilter from '../components/StateCategoryFilter';
 import CityCategoryFilter from '../components/CityCategoryFilter';
 import { apiUrl } from '../constants/initialState';
 import NavBar from '../layouts/NavBar';
+import Footer from '../layouts/Footer';
 
 const CollegeList = ({
   fetchIntialized,
@@ -109,6 +110,7 @@ const CollegeList = ({
         }
         </section>
       </div>
+      <Footer />
     </>
   );
 };
