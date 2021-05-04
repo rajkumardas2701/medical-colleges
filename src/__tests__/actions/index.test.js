@@ -2,11 +2,6 @@ import {
   dataFetchIntialized,
   dataFetchSuccess,
   dataFetchFailure,
-  changeStateCategoryAction,
-  // loadStateCategoryAction,
-  // loadCityOfStateCategoryAction,
-  // changeCityCategoryAction,
-  // loadCityAndStateObjectAction,
 } from '../../actions/index';
 
 describe('actions', () => {
