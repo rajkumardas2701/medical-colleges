@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 
-const CollegeDetail = ({ fetchInitialized, fetchSuccess, fetchFailure }) => {
+const CollegeDetail = ({
+  fetchInitialized, fetchSuccess, fetchFailure, colleges, isLoading, isError,
+}) => {
   useEffect(() => {
-    const data = async () => {
+    const fetchData = async () => {
       fetchInitialized();
       try {
         const apiResult = await fetch(apiUrl)
@@ -16,7 +18,7 @@ const CollegeDetail = ({ fetchInitialized, fetchSuccess, fetchFailure }) => {
         fetchFailure();
       }
     };
-    data();
+    fetchData();
   }, []);
 };
 
