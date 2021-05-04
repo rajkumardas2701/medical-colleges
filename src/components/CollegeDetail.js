@@ -6,6 +6,8 @@ import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 import NavBar from '../layouts/NavBar';
 import Footer from '../layouts/Footer';
+import '../styles/CollegeDetail.css';
+import '../styles/CollegeList.css';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure, colleges,
@@ -32,9 +34,10 @@ const CollegeDetail = ({
   return (
     <>
       <NavBar />
-      {isError && <div>Someting went wrong. Please try again...</div>}
-      {
-      isLoading ? (<div>Loading..!!!</div>) : (
+      <div className="detailsSection">
+        {isError && <div>Someting went wrong. Please try again...</div>}
+        {
+      isLoading ? (<div className="loader" />) : (
         <div>
           {
             (collegeObj) ? (
@@ -69,6 +72,7 @@ const CollegeDetail = ({
         </div>
       )
       }
+      </div>
       <Footer />
     </>
   );
