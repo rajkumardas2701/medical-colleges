@@ -23,6 +23,10 @@ const College = ({ college }) => (
       <b>Beds:</b>
       {college.hospitalBeds}
     </li>
+    <li>
+      <b>Admission capacity:</b>
+      {college.admissionCapacity}
+    </li>
     <a href={`/details/${college.name}`}>Link</a>
   </ul>
 );

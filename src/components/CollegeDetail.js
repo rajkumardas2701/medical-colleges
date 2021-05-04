@@ -1,12 +1,15 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router';
+import PropTypes from 'prop-types';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
-import { useParams } from 'react-router';
 
 const CollegeDetail = ({
-  fetchInitialized, fetchSuccess, fetchFailure,
+  fetchInitialized, fetchSuccess, fetchFailure, colleges,
+  isLoading, isError,
 }) => {
+  const { id } = useParams();
   useEffect(() => {
     const fetchData = async () => {
       fetchInitialized();
@@ -21,12 +24,67 @@ const CollegeDetail = ({
     };
     fetchData();
   }, []);
+
+  const collegeObj = colleges.find((college) => college.name === id);
+
+  return (
+    <>
+      {isError && <div>Someting went wrong. Please try again...</div>}
+      <a href="/">Home</a>
+      {
+      isLoading ? (<div>Loading..!!!</div>) : (
+        <div>
+          {
+            (collegeObj) ? (
+              <ul>
+                <li>
+                  <b>State:</b>
+                  {collegeObj.state}
+                </li>
+                <li>
+                  <b>Name:</b>
+                  {collegeObj.name}
+                </li>
+                <li>
+                  <b>City:</b>
+                  {collegeObj.city}
+                </li>
+                <li>
+                  <b>Ownership:</b>
+                  {collegeObj.ownership}
+                </li>
+                <li>
+                  <b>Beds:</b>
+                  {collegeObj.hospitalBeds}
+                </li>
+                <li>
+                  <b>Admission capacity:</b>
+                  {collegeObj.admissionCapacity}
+                </li>
+              </ul>
+            ) : (<div>Please wait..!!</div>)
+          }
+        </div>
+      )
+      }
+    </>
+  );
 };
 
-const params = useParams();
+CollegeDetail.defaultProps = {
+  colleges: [],
+  isLoading: false,
+  isError: false,
+};
 
-// colleges, isLoading, isError,
-// React,
+CollegeDetail.propTypes = {
+  fetchInitialized: PropTypes.func.isRequired,
+  fetchSuccess: PropTypes.func.isRequired,
+  fetchFailure: PropTypes.func.isRequired,
+  colleges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+};
 
 const mapsStateToProps = (state) => ({
   colleges: state.details.colleges,
