@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
+import NavBar from '../layouts/NavBar';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure, colleges,
@@ -29,8 +30,8 @@ const CollegeDetail = ({
 
   return (
     <>
+      <NavBar />
       {isError && <div>Someting went wrong. Please try again...</div>}
-      <a href="/">Home</a>
       {
       isLoading ? (<div>Loading..!!!</div>) : (
         <div>

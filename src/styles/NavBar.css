@@ -1,0 +1,40 @@
+navbar {
+  display: flex;
+  flex-direction: row;
+  background: rgba(41, 29, 29, 0.856);
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  color: whitesmoke;
+  width: 20%;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.logoAnc {
+  margin: 0 100px;
+  width: 20%;
+  text-decoration: none;
+}
+
+.btnAnc > button {
+  color: rgba(8, 7, 7, 0.856);
+  height: 40px;
+  font-size: 23px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+}
+
+.btnAnc,
+button {
+  margin-right: 150px;
+  width: 100px;
+  height: 40px;
+}
+
+button:hover {
+  cursor: pointer;
+}

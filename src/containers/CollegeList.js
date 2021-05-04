@@ -14,6 +14,7 @@ import {
 import StateCategoryFilter from '../components/StateCategoryFilter';
 import CityCategoryFilter from '../components/CityCategoryFilter';
 import { apiUrl } from '../constants/initialState';
+import NavBar from '../layouts/NavBar';
 
 const CollegeList = ({
   fetchIntialized,
@@ -63,8 +64,6 @@ const CollegeList = ({
   };
 
   const handleCityChange = (event) => changeCityCategory(event.target.value);
-  // console.log(stateCategory);
-  // console.log(cityCategory);
 
   if (colleges.length === 0) {
     collegesFiltered = null;
@@ -76,10 +75,15 @@ const CollegeList = ({
     collegesFiltered = colleges.filter((college) => college.city === cityCategory);
   }
   return (
-    <div>
-      <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
-      <section>
-        {
+    <>
+      <NavBar />
+      <div>
+        <h1>
+          {isError
+        && <div>Unable to fetch data at this moment, please try again later!</div>}
+        </h1>
+        <section>
+          {
           isLoading ? (<div>Loading...!!!</div>)
             : (
               <>
@@ -103,8 +107,9 @@ const CollegeList = ({
               </>
             )
         }
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 
