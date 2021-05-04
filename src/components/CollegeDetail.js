@@ -41,32 +41,32 @@ const CollegeDetail = ({
         <div>
           {
             (collegeObj) ? (
-              <ul>
-                <li>
-                  <b>State:</b>
-                  {collegeObj.state}
-                </li>
-                <li>
-                  <b>Name:</b>
-                  {collegeObj.name}
-                </li>
-                <li>
-                  <b>City:</b>
-                  {collegeObj.city}
-                </li>
-                <li>
-                  <b>Ownership:</b>
-                  {collegeObj.ownership}
-                </li>
-                <li>
-                  <b>Beds:</b>
-                  {collegeObj.hospitalBeds}
-                </li>
-                <li>
-                  <b>Admission capacity:</b>
-                  {collegeObj.admissionCapacity}
-                </li>
-              </ul>
+              <div className="detailsContainer">
+                <div className="detail-row">
+                  <b>State</b>
+                  <p>{collegeObj.state}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Name</b>
+                  <p>{collegeObj.name}</p>
+                </div>
+                <div className="detail-row">
+                  <b>City</b>
+                  <p>{collegeObj.city}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Ownership</b>
+                  <p>{collegeObj.ownership}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Beds</b>
+                  <p>{collegeObj.hospitalBeds}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Admission capacity</b>
+                  <p>{collegeObj.admissionCapacity}</p>
+                </div>
+              </div>
             ) : (<div>Please wait..!!</div>)
           }
         </div>
