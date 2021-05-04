@@ -6,9 +6,9 @@
 }
 
 .filterLabel {
-  color: rgba(41, 29, 29, 0.856);
+  color: rgb(245, 4, 4);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bolder;
   margin-right: 10px;
 }

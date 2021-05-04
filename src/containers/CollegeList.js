@@ -88,16 +88,18 @@ const CollegeList = ({
           isLoading ? (<div className="loader" />)
             : (
               <>
-                <section className="filterSection">
-                  <StateCategoryFilter
-                    handleStateChange={handleStateChange}
-                    allStateCategory={allStateCategory}
-                  />
-                  <CityCategoryFilter
-                    handleCityChange={handleCityChange}
-                    cityOfStateCategory={cityOfStateCategory}
-                  />
-                </section>
+                <div className="filterContainer">
+                  <section className="filterSection">
+                    <StateCategoryFilter
+                      handleStateChange={handleStateChange}
+                      allStateCategory={allStateCategory}
+                    />
+                    <CityCategoryFilter
+                      handleCityChange={handleCityChange}
+                      cityOfStateCategory={cityOfStateCategory}
+                    />
+                  </section>
+                </div>
                 <div className="collegeListSection">
                   {
                 (collegesFiltered)
