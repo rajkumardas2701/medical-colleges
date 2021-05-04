@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
+import { useParams } from 'react-router';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure,
@@ -21,6 +22,8 @@ const CollegeDetail = ({
     fetchData();
   }, []);
 };
+
+const params = useParams();
 
 // colleges, isLoading, isError,
 // React,
