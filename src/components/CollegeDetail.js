@@ -4,6 +4,10 @@ import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 import { apiUrl } from '../constants/initialState';
 import { detailsFetchIntialized, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
+import NavBar from '../layouts/NavBar';
+import Footer from '../layouts/Footer';
+import '../styles/CollegeDetail.css';
+import '../styles/CollegeList.css';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure, colleges,
@@ -29,44 +33,47 @@ const CollegeDetail = ({
 
   return (
     <>
-      {isError && <div>Someting went wrong. Please try again...</div>}
-      <a href="/">Home</a>
-      {
-      isLoading ? (<div>Loading..!!!</div>) : (
+      <NavBar />
+      <div className="detailsSection">
+        {isError && <div>Someting went wrong. Please try again...</div>}
+        {
+      isLoading ? (<div className="loader" />) : (
         <div>
           {
             (collegeObj) ? (
-              <ul>
-                <li>
-                  <b>State:</b>
-                  {collegeObj.state}
-                </li>
-                <li>
-                  <b>Name:</b>
-                  {collegeObj.name}
-                </li>
-                <li>
-                  <b>City:</b>
-                  {collegeObj.city}
-                </li>
-                <li>
-                  <b>Ownership:</b>
-                  {collegeObj.ownership}
-                </li>
-                <li>
-                  <b>Beds:</b>
-                  {collegeObj.hospitalBeds}
-                </li>
-                <li>
-                  <b>Admission capacity:</b>
-                  {collegeObj.admissionCapacity}
-                </li>
-              </ul>
+              <div className="detailsContainer">
+                <div className="detail-row">
+                  <b>State</b>
+                  <p>{collegeObj.state}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Name</b>
+                  <p>{collegeObj.name}</p>
+                </div>
+                <div className="detail-row">
+                  <b>City</b>
+                  <p>{collegeObj.city}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Ownership</b>
+                  <p>{collegeObj.ownership}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Beds</b>
+                  <p>{collegeObj.hospitalBeds}</p>
+                </div>
+                <div className="detail-row">
+                  <b>Admission capacity</b>
+                  <p>{collegeObj.admissionCapacity}</p>
+                </div>
+              </div>
             ) : (<div>Please wait..!!</div>)
           }
         </div>
       )
       }
+      </div>
+      <Footer />
     </>
   );
 };

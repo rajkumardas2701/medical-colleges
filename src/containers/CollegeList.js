@@ -14,6 +14,9 @@ import {
 import StateCategoryFilter from '../components/StateCategoryFilter';
 import CityCategoryFilter from '../components/CityCategoryFilter';
 import { apiUrl } from '../constants/initialState';
+import NavBar from '../layouts/NavBar';
+import Footer from '../layouts/Footer';
+import '../styles/CollegeList.css';
 
 const CollegeList = ({
   fetchIntialized,
@@ -30,7 +33,6 @@ const CollegeList = ({
   loadStateCategories,
   cityOfStateCategory,
   loadCityCategories,
-  // cityAndStateObject,
   loadStateAndCityObject,
 }) => {
   let collegesFiltered = [];
@@ -63,8 +65,6 @@ const CollegeList = ({
   };
 
   const handleCityChange = (event) => changeCityCategory(event.target.value);
-  // console.log(stateCategory);
-  // console.log(cityCategory);
 
   if (colleges.length === 0) {
     collegesFiltered = null;
@@ -76,22 +76,32 @@ const CollegeList = ({
     collegesFiltered = colleges.filter((college) => college.city === cityCategory);
   }
   return (
-    <div>
-      <h1>{isError && <div>Unable to fetch data at this moment, please try again later!</div>}</h1>
-      <section>
-        {
-          isLoading ? (<div>Loading...!!!</div>)
+    <>
+      <NavBar />
+      <div className="collegeSection">
+        <h1>
+          {isError
+        && <div>Unable to fetch data at this moment, please try again later!</div>}
+        </h1>
+        <section>
+          {
+          isLoading ? (<div className="loader" />)
             : (
               <>
-                <StateCategoryFilter
-                  handleStateChange={handleStateChange}
-                  allStateCategory={allStateCategory}
-                />
-                <CityCategoryFilter
-                  handleCityChange={handleCityChange}
-                  cityOfStateCategory={cityOfStateCategory}
-                />
-                {
+                <div className="filterContainer">
+                  <section className="filterSection">
+                    <StateCategoryFilter
+                      handleStateChange={handleStateChange}
+                      allStateCategory={allStateCategory}
+                    />
+                    <CityCategoryFilter
+                      handleCityChange={handleCityChange}
+                      cityOfStateCategory={cityOfStateCategory}
+                    />
+                  </section>
+                </div>
+                <div className="collegeListSection">
+                  {
                 (collegesFiltered)
                   ? (collegesFiltered.map((college) => (
                     <College college={college} key={uuidv4()} />
@@ -99,12 +109,16 @@ const CollegeList = ({
                   : (
                     <div>Please wait...</div>
                   )
+
                 }
+                </div>
               </>
             )
         }
-      </section>
-    </div>
+        </section>
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -1,34 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/College.css';
 
 const College = ({ college }) => (
-  <ul>
-    <li>
-      <b>State:</b>
-      {college.state}
-    </li>
-    <li>
-      <b>Name:</b>
-      {college.name}
-    </li>
-    <li>
-      <b>City:</b>
-      {college.city}
-    </li>
-    <li>
-      <b>Ownership:</b>
-      {college.ownership}
-    </li>
-    <li>
-      <b>Beds:</b>
-      {college.hospitalBeds}
-    </li>
-    <li>
-      <b>Admission capacity:</b>
-      {college.admissionCapacity}
-    </li>
-    <a href={`/details/${college.name}`}>Link</a>
-  </ul>
+  <a href={`/details/${college.name}`} className="collegeAnc">
+    <div className="collegeCard">
+      <p className="colgName" data-testid="college-link">
+        {college.name}
+      </p>
+      <p className="colgOwner">
+        {college.ownership}
+        {' '}
+        owned
+      </p>
+    </div>
+  </a>
 );
 
 College.propTypes = {
