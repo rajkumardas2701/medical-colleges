@@ -1,12 +1,38 @@
-# Getting Started with Create React App
+# Indian Medical Colleges
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This project is built using React and Redux
 
-## Available Scripts
+![screenshot](./public/home.png)
+![screenshot](./public/details.png)
+![screenshot](./public/error.png)
 
-In the project directory, you can run:
+## Project Description
 
-### `yarn start`
+This is a React app created using the React library which gives list of all the Medical Colleges in India.
+You can also click on any of the college tile to see the available seats and beds for patients which is good to know in advance during this pandemic situation.
+This app is based on Catalogue of Statistics as you have an option to filter your state and city to view hospitals of your choice.
+
+## Built With
+
+- React
+- HTML and CSS
+- Heroku
+- Eslint and Stylelint as linters
+- React Testing library and Jest for DOM and Snapshot testing
+
+## Live Demo
+
+[Demo Link](https://indian-medical-colleges-2021.netlify.app/)
+
+## Project Setup
+
+- Fork this GitHub repository
+- Clone the repository to your machine
+- Run 'npm install' to install the project dependencies
+- Run 'npm start' to load the application on your browser
+- Above command should open this URL http://localhost:8080/ on your browser.
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,57 +40,29 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+
+### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Authors
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+👤 **Rajkumar Das**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Github: [@rajkumardas2701](https://github.com/rajkumardas2701)
+- Twitter: [@Rajkuma58621299](https://twitter.com/Rajkuma58621299)
+- Linkedin: [Rajkumar Das](https://www.linkedin.com/in/rajkumar-das-41308961/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🤝 Contributing
 
-### `yarn eject`
+Contributions, issues and feature requests are welcome!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Feel free to check the [issues page](https://github.com/rajkumardas2701/medical-colleges/issues).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Show your support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Give a ⭐️ if you like this project!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📝 License
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](lic.url) licensed.
