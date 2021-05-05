@@ -1,7 +1,7 @@
 import '../styles/NavBar.css';
 
 const NavBar = () => (
-  <navbar>
+  <div className="navbar">
     <a href="/" className="logoAnc">
       <h1 data-testid="navbar-heading">IndianMedicalColleges</h1>
     </a>
@@ -10,7 +10,7 @@ const NavBar = () => (
         Home
       </button>
     </a>
-  </navbar>
+  </div>
 );
 
 export default NavBar;

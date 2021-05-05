@@ -45,7 +45,6 @@
 
 .collegeListSection {
   display: flex;
-  flex-direction: row;
   flex-flow: wrap;
   flex-shrink: initial;
   width: 90%;

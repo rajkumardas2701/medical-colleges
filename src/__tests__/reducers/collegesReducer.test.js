@@ -1,4 +1,4 @@
-import { dataFetchIntialized, dataFetchSuccess, dataFetchFailure } from '../../actions/index';
+import { dataFetchIntialized, dataFetchFailure } from '../../actions/index';
 import collegesReducer from '../../reducers/collegesReducer';
 
 describe('collegesReducer', () => {

@@ -1,4 +1,4 @@
-navbar {
+.navbar {
   display: flex;
   flex-direction: row;
   background: rgb(41, 29, 29);
@@ -28,6 +28,13 @@ h1 {
   height: 50px;
 }
 
+.btnAnc,
+button {
+  margin-right: 150px;
+  width: 100px;
+  height: 40px;
+}
+
 .btnAnc > button {
   color: rgba(8, 7, 7, 0.856);
   height: 40px;
@@ -36,13 +43,6 @@ h1 {
   font-weight: bolder;
   border-radius: 7px;
   border-style: none;
-}
-
-.btnAnc,
-button {
-  margin-right: 150px;
-  width: 100px;
-  height: 40px;
 }
 
 button:hover {
