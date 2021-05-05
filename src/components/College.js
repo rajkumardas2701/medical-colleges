@@ -5,7 +5,7 @@ import '../styles/College.css';
 const College = ({ college }) => (
   <a href={`/details/${college.name}`} className="collegeAnc">
     <div className="collegeCard">
-      <p className="colgName">
+      <p className="colgName" data-testid="college-link">
         {college.name}
       </p>
       <p className="colgOwner">

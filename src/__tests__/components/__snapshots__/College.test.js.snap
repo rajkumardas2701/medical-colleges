@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders item component correctly 1`] = `
+<a
+  className="collegeAnc"
+  href="/details/Andaman and Nicobar Islands Insitute of Medical Sciences, Port Blair"
+>
+  <div
+    className="collegeCard"
+  >
+    <p
+      className="colgName"
+      data-testid="college-link"
+    >
+      Andaman and Nicobar Islands Insitute of Medical Sciences, Port Blair
+    </p>
+    <p
+      className="colgOwner"
+    >
+      Govt.
+       
+      owned
+    </p>
+  </div>
+</a>
+`;
