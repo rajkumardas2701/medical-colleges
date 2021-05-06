@@ -2,16 +2,16 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import Navbar from '../../layouts/NavBar';
+import NavBar from '../../layouts/NavBar';
 
 afterEach(cleanup);
 
 it('renders Navbar component correctly', () => {
-  const nav = renderer.create(<Navbar />).toJSON();
+  const nav = renderer.create(<NavBar />).toJSON();
   expect(nav).toMatchSnapshot();
 });
 
 it('should display the heading', () => {
-  const { getByTestId } = render(<Navbar />);
+  const { getByTestId } = render(<NavBar />);
   expect(getByTestId('navbar-heading')).toHaveTextContent('IndianMedicalColleges');
 });
