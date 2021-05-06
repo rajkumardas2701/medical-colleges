@@ -24,6 +24,10 @@ This app is based on Catalogue of Statistics as you have an option to filter you
 
 [Demo Link](https://indian-medical-colleges-2021.netlify.app/)
 
+## Presentation
+
+[Link](https://www.youtube.com/watch?v=Ceso2GlsHq8)
+
 ## Project Setup
 
 - Fork this GitHub repository
