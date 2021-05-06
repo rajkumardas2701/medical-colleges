@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Navbar component correctly 1`] = `
+<div
+  className="navbar"
+>
+  <a
+    className="logoAnc"
+    href="/"
+  >
+    <h1
+      data-testid="navbar-heading"
+    >
+      IndianMedicalColleges
+    </h1>
+  </a>
+  <a
+    className="btnAnc"
+    href="/"
+  >
+    <button
+      type="button"
+    >
+      Home
+    </button>
+  </a>
+</div>
+`;

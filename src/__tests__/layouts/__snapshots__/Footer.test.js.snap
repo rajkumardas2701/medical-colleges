@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Footer component correctly 1`] = `
+<footer>
+  <p>
+    © 
+    2021
+     
+    |
+     
+    <b>
+      Rajkumar Das
+    </b>
+     
+    All rights reserved
+  </p>
+</footer>
+`;

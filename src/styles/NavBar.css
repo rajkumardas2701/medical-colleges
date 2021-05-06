@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background: rgb(41, 29, 29);
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  justify-items: center;
+  z-index: 90;
+}
+
+h1 {
+  color: whitesmoke;
+  width: 20%;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 6px;
+}
+
+.logoAnc {
+  margin: 0 100px;
+  width: 20%;
+  text-decoration: none;
+  height: 50px;
+}
+
+.btnAnc,
+button {
+  margin-right: 150px;
+  width: 100px;
+  height: 40px;
+}
+
+.btnAnc > button {
+  color: rgba(8, 7, 7, 0.856);
+  height: 40px;
+  font-size: 23px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  border-radius: 7px;
+  border-style: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
