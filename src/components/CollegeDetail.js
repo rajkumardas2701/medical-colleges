@@ -67,7 +67,7 @@ const CollegeDetail = ({
                   <p>{collegeObj.admissionCapacity}</p>
                 </div>
               </div>
-            ) : (<div>Please wait..!!</div>)
+            ) : (<div className="waiting">Please wait..!!!</div>)
           }
         </div>
       )

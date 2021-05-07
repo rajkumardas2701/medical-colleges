@@ -10,6 +10,7 @@
   border: 2px solid rgba(41, 29, 29, 0.856);
   padding: 20px;
   background-color: rgb(185, 205, 241);
+  border-radius: 10px;
 }
 
 .detail-row {
@@ -33,4 +34,12 @@
 .detail-row > b {
   margin-right: 40px;
   color: rgba(41, 29, 29, 0.856);
+}
+
+.waiting {
+  width: 200px;
+  margin: 300px auto;
+  color: brown;
+  font-size: larger;
+  font-weight: bolder;
 }
