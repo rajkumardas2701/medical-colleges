@@ -57,5 +57,5 @@
 .mapsImages {
   display: flex;
   flex-direction: row;
-  height: fit-content;
+  height: 40vh;
 }
