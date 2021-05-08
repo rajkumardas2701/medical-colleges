@@ -8,6 +8,7 @@ import NavBar from '../layouts/NavBar';
 import Footer from '../layouts/Footer';
 import '../styles/CollegeDetail.css';
 import '../styles/CollegeList.css';
+import Map from './Map';
 
 const CollegeDetail = ({
   fetchInitialized, fetchSuccess, fetchFailure, colleges,
@@ -41,30 +42,38 @@ const CollegeDetail = ({
         <div>
           {
             (collegeObj) ? (
-              <div className="detailsContainer">
-                <div className="detail-row">
-                  <b>State</b>
-                  <p>{collegeObj.state}</p>
+              <div className="detailsObjects">
+                <div className="detailsContainer">
+                  <div className="detail-row">
+                    <b>State</b>
+                    <p>{collegeObj.state}</p>
+                  </div>
+                  <div className="detail-row">
+                    <b>Name</b>
+                    <p>{collegeObj.name}</p>
+                  </div>
+                  <div className="detail-row">
+                    <b>City</b>
+                    <p>{collegeObj.city}</p>
+                  </div>
+                  <div className="detail-row">
+                    <b>Ownership</b>
+                    <p>{collegeObj.ownership}</p>
+                  </div>
+                  <div className="detail-row">
+                    <b>Beds</b>
+                    <p>{collegeObj.hospitalBeds}</p>
+                  </div>
+                  <div className="detail-row">
+                    <b>Admission capacity</b>
+                    <p>{collegeObj.admissionCapacity}</p>
+                  </div>
                 </div>
-                <div className="detail-row">
-                  <b>Name</b>
-                  <p>{collegeObj.name}</p>
-                </div>
-                <div className="detail-row">
-                  <b>City</b>
-                  <p>{collegeObj.city}</p>
-                </div>
-                <div className="detail-row">
-                  <b>Ownership</b>
-                  <p>{collegeObj.ownership}</p>
-                </div>
-                <div className="detail-row">
-                  <b>Beds</b>
-                  <p>{collegeObj.hospitalBeds}</p>
-                </div>
-                <div className="detail-row">
-                  <b>Admission capacity</b>
-                  <p>{collegeObj.admissionCapacity}</p>
+                <div>
+                  <div className="mapsContainer">
+                    <Map />
+                  </div>
+                  <div />
                 </div>
               </div>
             ) : (<div className="waiting">Please wait..!!!</div>)

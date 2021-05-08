@@ -43,3 +43,19 @@
   font-size: larger;
   font-weight: bolder;
 }
+
+.mapsContainer {
+  width: 40%;
+  margin: 10px 0 0 30px;
+}
+
+.detailsObjects {
+  display: flex;
+  flex-direction: column;
+}
+
+.mapsImages {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+}
